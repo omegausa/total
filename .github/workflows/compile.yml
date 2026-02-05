@@ -42,13 +42,16 @@ jobs:
           cp total.pdf output/
 
       - name: Setup Pages
+        if: github.event.repository.visibility == 'public'
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
+        if: github.event.repository.visibility == 'public'
         uses: actions/upload-pages-artifact@v3
         with:
           path: output/
 
       - name: Deploy to GitHub Pages
+        if: github.event.repository.visibility == 'public'
         id: deployment
         uses: actions/deploy-pages@v4
