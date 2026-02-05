@@ -36,6 +36,15 @@ jobs:
       - name: Compile LaTeX
         run: latexmk total.tex
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-output
+          path: |
+            total.tex
+            total.pdf
+            total.log
+
       - name: Copy output file
         run: |
           mkdir output
