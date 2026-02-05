@@ -1,0 +1,47 @@
+name: Compile LaTeX and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-slim
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install TeX Live
+        run: |
+          sudo apt update
+          sudo apt install -y texlive-base texlive-latex-recommended texlive-latex-extra
+
+      - name: Install more packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: |
+            latexmk
+
+      - name: Compile LaTeX
+        run: latexmk -pdf total.tex
+
+#     - name: Setup Pages
+#       uses: actions/configure-pages@v4
+
+#     - name: Upload artifact
+#       uses: actions/upload-pages-artifact@v3
+
+#     - name: Deploy to GitHub Pages
+#       id: deployment
+#       uses: actions/deploy-pages@v4

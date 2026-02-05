@@ -1,0 +1,502 @@
+\documentclass[11pt]{scrartcl}
+%% PREAMBLE (for distribution or copy-pasting)
+
+%%% Load packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{microtype}
+
+%%% Colored sections
+\renewcommand*{\sectionformat}%
+  {\color{purple}\S\thesection\enskip}
+\renewcommand*{\subsectionformat}%
+  {\color{purple}\S\thesubsection\enskip}
+\renewcommand*{\subsubsectionformat}%
+  {\color{purple}\S\thesubsubsection\enskip}
+\addtokomafont{paragraph}{\color{orange!35!black}\P\ }
+\KOMAoptions{numbers=noenddot}
+
+%%% Title
+\addtokomafont{subtitle}{\Large}
+\setkomafont{author}{\Large\scshape}
+\setkomafont{date}{\Large\normalsize}
+
+%%% Page setup
+\usepackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+\makeatletter
+\ihead{\footnotesize\textbf{\@author} (\@date)}
+\automark{section}
+\chead{}
+\ohead{\footnotesize\textbf{\@title}}
+\cfoot{\pagemark}
+\makeatother
+
+%%% Macros
+\providecommand{\ol}{\overline}
+\providecommand{\ul}{\underline}
+\providecommand{\wt}{\widetilde}
+\providecommand{\wh}{\widehat}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\inv}{^{-1}}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\providecommand{\CC}{\mathbb C}
+\providecommand{\FF}{\mathbb F}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\ts}{\textsuperscript}
+\providecommand{\dg}{^\circ}
+\providecommand{\ii}{\item}
+\providecommand{\defeq}{\coloneqq}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+\providecommand{\hrulebar}{\par
+\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+\par\nointerlineskip \vspace{\baselineskip}}
+
+%%% Optional colored theorems
+\usepackage{thmtools}
+\declaretheorem[style=definition,name=Theorem,numberwithin=section]{theorem}
+
+%% END PREAMBLE
+
+\begin{document}
+\title{Trivium of Theorems and Lemmas}
+\subtitle{American Masters in Math}
+\author{OMEGA}
+\date{February 2026}
+\maketitle
+
+\tableofcontents
+
+\section{Preface}
+\subsection{Motivation}
+In math competitions, there is often significant confusion or ``gray areas''
+in what results are allowed to cite on competitions.
+The aim of the TOTAL is to resolve that ambiguity, as follows:
+
+\begin{itemize}
+  \item Every theorem that appears in TOTAL may be quoted on our exams.
+    We expect this to cover the extreme majority of use cases.
+  \item On rare occasions, we may choose to disallow certain results
+    (see \autoref{sec:forbidden}).
+  \item In the case of results which are neither allowed nor forbidden,
+    the discretion is up to the organizers.
+    Our general guidance is to accept named theorems that do not trivialize the problem.
+    However, we hope that this situation will be extremely rare,
+    and to not occur in a typical year.
+\end{itemize}
+
+\subsection{What this TOTAL is not}
+The TOTAL is \emph{not} the following:
+\begin{itemize}
+  \item This is not a list of theorems we expect everyone to know.
+
+  In fact, if a theorem is actually present in this PDF
+  (rather than under ``blanket statements''),
+  that is actually an indication that it may be fairly obscure:
+  the most important results are covered by the blanket statements.
+
+  We strongly anti-recommend using the TOTAL as any sort of study guide,
+  or trying to memorize theorems that you see in TOTAL.
+  That would be a lot like trying to learn English as a second language
+  by memorizing the Merriam-Webster dictionary.
+
+  \item The TOTAL is meant to cover 99\% of the common situations, not 100\%.
+  We don't think it's prudent to try to anticipate literally everything,
+  and we leave the extremely rare corner cases up to grader discretion.
+\end{itemize}
+
+\subsection{Contributing}
+If your favorite theorem is not included here,
+you may submit a pull request on GitHub to consider it for inclusion.
+See \href{https://github.com/omegausa/total/blob/main/CONTRIBUTING.md}{CONTRIBUTING.md}
+for guidelines.
+
+\subsection{Explicitly forbidden theorems}
+\label{sec:forbidden}
+In rare cases, OMEGA may decide to reject a request to add a certain theorem to the TOTAL.
+A list of such cases, and their accompanying pull requests, are listed here:
+\begin{quote}
+  \emph{No forbidden results yet.}
+\end{quote}
+
+\newpage
+
+\section{General blanket statements}
+Any theorem appearing in any of the following textbooks may be quoted:
+\begin{itemize}
+  \item The OMEGA Syllabus
+  \item The Art and Craft of Problem Solving (Paul Zeitz)
+  \item The Art of Problem Solving Volumes 1 and 2 (Sandor Lehoczky and Richard Rusczyk)
+  \item Chapter 2: Basic Concepts and Facts from The IMO Compendium
+    (Thomas Mildorf)
+\end{itemize}
+
+\section{Additional theorems in algebra}
+As a blanket statement, we allow any results in
+\emph{Olympiad Inequalities} by Thomas Mildorf\footnote{This includes the $n-1$ equal
+  value principle mentioned in the footnote on page 15.
+  We include a caution that this comment is only for functions
+  whose domain is $\mathbb R$, and not say $\mathbb R^+$.}
+
+\subsection{Functional equations}
+\begin{theorem}
+  Suppose $f \colon \RR \to \RR$ satisfies $f(x+y) = f(x) + f(y)$.
+  Then $f(qx) = qf(x)$ for any $q \in \QQ$.
+  Moreover, $f$ is linear if there exists $(a,b) \in \RR^2$ and $\eps > 0$
+  such that $(x-a)^2 + (f(x)-b)^2 > \eps$ for every $x$.
+\end{theorem}
+
+\subsection{Polynomials}
+\begin{theorem}
+  [Mason-Stothers theorem]
+  Let $a(t)$, $b(t)$, $c(t)$ be pairwise coprime polynomials over a field,
+  not all constant, satisfying $a + b + c = 0$.
+  Then
+  \[ \max(\deg a, \deg b, \deg c) \le n_0(abc) - 1, \]
+  where $n_0(f)$ denotes the number of distinct roots of $f$.
+\end{theorem}
+
+\begin{theorem}
+  [Lagrange interpolation formula]
+  Let $k$ be a field of characteristic zero.
+  Given $n+1$ distinct pairs $(x_0, y_0)$, \dots, $(x_n, y_n)$ in $k^2$
+  with $x_i$ pairwise distinct,
+  the unique polynomial of degree at most $n$ passing through all of them is
+  \[ P(x) = \sum_{i=0}^{n} y_i \prod_{\substack{0 \le j \le n \\ j \neq i}}
+    \frac{x - x_j}{x_i - x_j}. \]
+\end{theorem}
+
+\begin{theorem}
+  [Newton's forward difference formula]
+  Define forward differences by $\Delta^0 f(x) = f(x)$
+  and $\Delta^{k} f(x) = \Delta^{k-1} f(x+1) - \Delta^{k-1} f(x)$.
+  Then for any polynomial $f$ of degree at most $n$,
+  \[ f(x) = \sum_{k=0}^{n} \binom{x}{k} \Delta^k f(0). \]
+\end{theorem}
+
+\section{Additional theorems in combinatorics}
+\subsection{Graph theory}
+\begin{theorem}
+  [Max flow min cut]
+  In a flow network, the maximum value of a flow
+  from source $s$ to sink $t$ equals the minimum capacity
+  of an $s$-$t$ cut.
+\end{theorem}
+
+\begin{theorem}
+  [Four color theorem]
+  Every planar graph is $4$-colorable.
+\end{theorem}
+
+\subsection{Game theory}
+\begin{theorem}
+  [Sprauge-Grundy]
+  Every impartial game under the normal play convention
+  is equivalent to a Nim heap of some size $n \ge 0$.
+  The Grundy value of a position is the minimum excludant (mex)
+  of the Grundy values of the positions reachable in one move.
+\end{theorem}
+
+\subsection{Extremal combinatorics}
+\begin{theorem}
+  [Dilworth theorem]
+  In any finite partially ordered set,
+  the maximum size of an antichain equals
+  the minimum number of chains needed to partition the set.
+\end{theorem}
+
+\begin{theorem}
+  [Erdos-Szekeres]
+  Every sequence of more than $(r-1)(s-1)$ distinct real numbers
+  contains an increasing subsequence of length $r$
+  or a decreasing subsequence of length $s$.
+\end{theorem}
+
+\subsection{Enumerative identities}
+\begin{theorem}
+  [Hook-length formula]
+  The number of standard Young tableaux of shape $\lambda$ with $n = |\lambda|$ cells is
+  \[ \frac{n!}{\prod_{u \in \lambda} h(u)}, \]
+  where $h(u)$ is the hook length of cell $u$.
+\end{theorem}
+
+\section{Additional theorems in geometry}
+\subsection{Blanket statements}
+We allow with proof any results from
+\emph{Euclidean Geometry in Mathematical Olympiads} by Evan Chen.
+
+\subsection{Projective results}
+\begin{theorem}
+  [Desargue involution theorem]
+  Let $ABCD$ be four points on a conic, and let $\ell$ be a line.
+  Then the three pairs of points
+  $(AB \cap \ell,\; CD \cap \ell)$,
+  $(AC \cap \ell,\; BD \cap \ell)$,
+  $(AD \cap \ell,\; BC \cap \ell)$
+  are in involution.
+  If $\ell$ meets the conic at points $P$ and $Q$,
+  then $(P, Q)$ is also a pair in this involution.
+\end{theorem}
+
+\section{Additional theorems in number theory}
+\subsection{Famous theorems}
+\begin{theorem}
+  [Prime number theorem for arithmetic progressions]
+  For coprime positive integers $a$ and $q$,
+  the number of primes $p \le x$ with $p \equiv a \pmod{q}$ is
+  \[ (1+o(1)) \frac{x}{\varphi(q) \ln x} \]
+  as $x \to \infty$.
+  In particular, every such arithmetic progression contains infinitely many primes.
+\end{theorem}
+
+\begin{theorem}
+  [Zsigmondy's theorem]
+  For coprime integers $a > b > 0$ and $n \ge 3$,
+  the number $a^n - b^n$ has a prime divisor
+  that does not divide $a^k - b^k$ for any $1 \le k < n$,
+  with the sole exception $(a, b, n) = (2, 1, 6)$.
+\end{theorem}
+
+\begin{theorem}
+  [Kobayashi's theorem]
+  Let $S$ be an infinite set of integers.
+  Then there is at most one integer $a \in \ZZ$ such that
+  \[ \left\{ p \text{ prime} : p \mid s + a \text{ for some} s \in S\right\} \]
+  is finite.
+\end{theorem}
+
+\begin{theorem}
+  [Bertrand's postulate]
+  For every integer $n \ge 2$, there exists a prime $p$ with $n < p < 2n$.
+\end{theorem}
+
+\begin{theorem}
+  [Bounded gaps]
+  There are infinitely many pairs of primes differing by at most $246$.
+\end{theorem}
+
+\begin{theorem}
+  [Falting's theorem]
+  An algebraic curve of genus $g \ge 2$ over a number field
+  has only finitely many rational points.
+\end{theorem}
+
+\begin{theorem}
+  [Catalan's conjecture]
+  The only solution in integers $x, y, a, b > 1$
+  to $x^a - y^b = 1$ is $3^2 - 2^3 = 1$.
+\end{theorem}
+
+\begin{theorem}
+  [Vinogradov's theorem]
+  Every sufficiently large odd integer
+  can be expressed as the sum of three primes.
+\end{theorem}
+
+\begin{theorem}
+  [Chen's theorem]
+  Every sufficiently large even integer
+  can be written as the sum of a prime
+  and a semiprime (a product of at most two primes).
+\end{theorem}
+
+\begin{theorem}
+  [Fermat's last theorem]
+  There are no solutions in positive integers
+  to $a^n + b^n = c^n$ for any integer $n \ge 3$.
+\end{theorem}
+
+\subsection{Modular arithmetic}
+\begin{theorem}
+  [Thue's lemma]
+  For a prime $p$ and integer $a$ with $p \nmid a$,
+  there exist integers $x, y$ with $1 \le x, y \le \lfloor \sqrt{p} \rfloor$
+  such that $ax \equiv \pm y \pmod{p}$.
+\end{theorem}
+
+\subsection{Integer polynomials}
+\begin{theorem}
+  [Cohn criteria]
+  Let $f(x) = a_n x^n + \dots + a_1 x + a_0$ with $a_i \in \ZZ$
+  and $0 \le a_i \le b - 1$ for some integer $b \ge 2$.
+  If $f(b)$ is prime, then $f(x)$ is irreducible over $\ZZ$.
+\end{theorem}
+
+\begin{theorem}
+  [Hensel lemma]
+  Let $f(x) \in \ZZ[x]$ and let $p$ be a prime.
+  If $a \in \ZZ$ satisfies $f(a) \equiv 0 \pmod{p^k}$ and $p \nmid f'(a)$,
+  then there is a unique $b \pmod{p^{k+1}}$ with $b \equiv a \pmod{p^k}$
+  and $f(b) \equiv 0 \pmod{p^{k+1}}$.
+\end{theorem}
+
+\subsection{Results relating to $\nu_p$}
+\begin{theorem}
+  [Legendre formula]
+  For a prime $p$ and positive integer $n$,
+  \[ \nu_p(n!) = \sum_{i=1}^{\infty} \left\lfloor \frac{n}{p^i} \right\rfloor
+    = \frac{n - s_p(n)}{p-1}, \]
+  where $s_p(n)$ is the sum of the digits of $n$ in base $p$.
+\end{theorem}
+
+\begin{theorem}
+  [Lifting the exponent lemma]
+  Let $p$ be an odd prime and let $a, b$ be integers with
+  $p \mid a - b$ but $p \nmid a$ and $p \nmid b$.
+  Then\footnote{This actually appears in the IMO Compendium already,
+  but the statement is so different-looking we provide it here again.}
+  \[ \nu_p(a^n - b^n) = \nu_p(a - b) + \nu_p(n). \]
+  Similarly, if $p \mid a + b$ and $n$ is odd,
+  then $\nu_p(a^n + b^n) = \nu_p(a + b) + \nu_p(n)$.
+
+  When $p=2$, we instead have the following result for all odd integers $x$ and $y$:
+  \[
+    \nu_2(x^n-y^n)
+    = \begin{cases}
+      \nu_2(x-y) + \nu_2(x+y) + \nu_2(n) - 1 & n \text{ even} \\
+      \nu_2(x-y) & n \text{ odd}.
+    \end{cases}
+  \]
+\end{theorem}
+
+\subsection{Numerical semigroups}
+\begin{theorem}
+  [Chicken McNugget theorem]
+  For coprime positive integers $m$ and $n$,
+  the greatest integer that cannot be represented as $am + bn$
+  for nonnegative integers $a, b$ is $mn - m - n$.
+\end{theorem}
+
+
+\section{Additional theorems in linear algebra}
+\begin{theorem}
+  [Spectral theorem for Hermitian matrices on $\mathbb{C}$]
+  Every Hermitian matrix can be unitarily diagonalized.
+  Equivalently, it admits an orthonormal basis of eigenvectors,
+  and all eigenvalues are real.
+\end{theorem}
+
+\begin{theorem}
+  [Cayley-Hamilton theorem]
+  Every square matrix over a commutative ring
+  satisfies its own characteristic polynomial.
+\end{theorem}
+
+\begin{theorem}
+  [Farkas lemma]
+  Let $A$ be an $m \times n$ real matrix and $b \in \RR^m$.
+  Then exactly one of the following holds:
+  \begin{enumerate}
+    \item There exists $x \in \RR^n$ with $Ax = b$ and $x \ge 0$.
+    \item There exists $y \in \RR^m$ with $A^\top y \ge 0$ and $b^\top y < 0$.
+  \end{enumerate}
+\end{theorem}
+
+\section{Additional theorems in abstract algebra}
+\begin{theorem}
+  [Burnside lemma]
+  The number of orbits of a finite group $G$ acting on a set $X$ is
+  \[ \frac{1}{|G|} \sum_{g \in G} |X^g|, \]
+  where $X^g = \{x \in X : g \cdot x = x\}$ is the set of elements fixed by $g$.
+\end{theorem}
+
+\begin{theorem}
+  [Sylow theorem]
+  Let $G$ be a finite group of order $p^a m$ where $p \nmid m$.
+  \begin{enumerate}
+    \item There exists a subgroup of $G$ of order $p^a$ (a Sylow $p$-subgroup).
+    \item All Sylow $p$-subgroups are conjugate to each other.
+    \item The number $n_p$ of Sylow $p$-subgroups satisfies
+      $n_p \equiv 1 \pmod{p}$ and $n_p \mid m$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  [Fundamental theorem of Galois theory]
+  Let $L/K$ be a finite Galois extension with Galois group $G$.
+  There is an inclusion-reversing bijection between
+  intermediate fields $K \subseteq E \subseteq L$
+  and subgroups $H \le G$,
+  given by $E \mapsto \operatorname{Gal}(L/E)$ and $H \mapsto L^H$.
+  Moreover, $E/K$ is a normal extension
+  if and only if the corresponding subgroup is normal in $G$.
+\end{theorem}
+
+\begin{theorem}
+  [Chebotarev density theorem]
+  Let $L/K$ be a Galois extension of number fields with Galois group $G$.
+  For any conjugacy class $C \subseteq G$,
+  the set of unramified primes of $K$ whose Frobenius conjugacy class equals $C$
+  has natural density $|C|/|G|$.
+\end{theorem}
+
+\section{Additional theorems in real and complex analysis}
+\begin{theorem}
+  [Picard]
+  A nonconstant entire function $f \colon \CC \to \CC$
+  takes every complex value with at most one exception.
+\end{theorem}
+
+\begin{theorem}
+  [Taylor series for $\sin$ and $\cos$]
+  The following two Taylor series provide analytic extensions of the sine and cosine
+  functions from $\CC$ to $\CC$:
+  \begin{align*}
+    \cos z &= 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \frac{z^6}{6!} + \dots \\
+    \sin z &= z - \frac{z^3}{2!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \dots.
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}
+  [Extreme value theorem on compact sets]
+  A continuous real-valued function on a nonempty compact set
+  attains its maximum and minimum values.
+\end{theorem}
+
+\begin{theorem}
+  [Heine--Borel]
+  A subset of $\RR^n$ is compact
+  if and only if it is closed and bounded.
+\end{theorem}
+
+\begin{theorem}
+  [Bolzano--Weierstrass]
+  Every bounded sequence in $\RR^n$
+  has a convergent subsequence.
+\end{theorem}
+
+\begin{theorem}
+  [Weierstrass approximation theorem]
+  Let $f \colon [a,b] \to \RR$ be continuous.
+  For every $\eps > 0$, there exists a polynomial $p$ such that $|f(x)-p(x)| < \eps$
+  for all $x \in [a,b]$.
+\end{theorem}
+
+\begin{theorem}
+  [Arzela--Ascoli theorem]
+  A sequence of real-valued functions on a compact metric space
+  has a uniformly convergent subsequence
+  if and only if it is uniformly bounded and equicontinuous.
+\end{theorem}
+
+\begin{theorem}
+  [Rouche's theorem]
+  If $f$ and $g$ are holomorphic inside and on a simple closed contour $C$,
+  and $|g(z)| < |f(z)|$ on $C$,
+  then $f$ and $f + g$ have the same number of zeros inside $C$,
+  counted with multiplicity.
+\end{theorem}
+
+
+\end{document}
