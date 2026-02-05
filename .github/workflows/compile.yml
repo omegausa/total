@@ -34,7 +34,7 @@ jobs:
             latexmk
 
       - name: Compile LaTeX
-        run: latexmk -pdf total.tex
+        run: latexmk total.tex
 
       - name: Copy output file
         run: |
