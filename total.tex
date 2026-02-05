@@ -99,7 +99,7 @@ The aim of the TOTAL is to resolve that ambiguity, as follows:
 \subsection{What this TOTAL is not}
 The TOTAL is \emph{not} the following:
 \begin{itemize}
-  \item This is not a list of theorems we expect everyone to know.
+  \item \textbf{This is not a list of theorems we expect everyone to know.}
 
   In fact, if a theorem is actually present in this PDF
   (rather than under ``blanket statements''),
@@ -133,24 +133,26 @@ A list of such cases, and their accompanying pull requests, are listed here:
 \newpage
 
 \section{General blanket statements}
-Any theorem appearing in any of the following textbooks may be quoted:
+Any theorem appearing in any of the following sources may be quoted:
 \begin{itemize}
-  \item The OMEGA Syllabus
+  \item The OMEGA syllabus
   \item The Art and Craft of Problem Solving (Paul Zeitz)
   \item The Art of Problem Solving Volumes 1 and 2 (Sandor Lehoczky and Richard Rusczyk)
-  \item Chapter 2: Basic Concepts and Facts from The IMO Compendium
-    (Thomas Mildorf)
+  \item Chapter 2: Basic Concepts and Facts, from The IMO Compendium
 \end{itemize}
 
 \section{Additional theorems in algebra}
 As a blanket statement, we allow any results in
-\emph{Olympiad Inequalities} by Thomas Mildorf\footnote{This includes the $n-1$ equal
-  value principle mentioned in the footnote on page 15.
-  We include a caution that this comment is only for functions
-  whose domain is $\mathbb R$, and not say $\mathbb R^+$.}
+\emph{Olympiad Inequalities} by Thomas Mildorf.\footnote{This includes the so-called
+  $n-1$ equal value principle mentioned in the footnote on page 15:
+  suppose $f \colon \RR \to \RR$ is a function
+  with exactly one inflection point and $s$ is a fixed real number.
+  Consider optimizing $\sum f(x_i)$ subject to $\sum x_i = s$.
+  If a maximum or minimum exists, it can be achieved when $n-1$ variables are equal.}
 
 \subsection{Functional equations}
 \begin{theorem}
+  [Properties of Cauchy functional equation]
   Suppose $f \colon \RR \to \RR$ satisfies $f(x+y) = f(x) + f(y)$.
   Then $f(qx) = qf(x)$ for any $q \in \QQ$.
   Moreover, $f$ is linear if there exists $(a,b) \in \RR^2$ and $\eps > 0$
@@ -159,7 +161,7 @@ As a blanket statement, we allow any results in
 
 \subsection{Polynomials}
 \begin{theorem}
-  [Mason-Stothers theorem]
+  [Mason--Stothers theorem]
   Let $a(t)$, $b(t)$, $c(t)$ be pairwise coprime polynomials over a field,
   not all constant, satisfying $a + b + c = 0$.
   Then
@@ -201,7 +203,7 @@ As a blanket statement, we allow any results in
 
 \subsection{Game theory}
 \begin{theorem}
-  [Sprauge-Grundy]
+  [Sprague--Grundy theorem]
   Every impartial game under the normal play convention
   is equivalent to a Nim heap of some size $n \ge 0$.
   The Grundy value of a position is the minimum excludant (mex)
@@ -210,14 +212,14 @@ As a blanket statement, we allow any results in
 
 \subsection{Extremal combinatorics}
 \begin{theorem}
-  [Dilworth theorem]
+  [Dilworth's theorem]
   In any finite partially ordered set,
   the maximum size of an antichain equals
   the minimum number of chains needed to partition the set.
 \end{theorem}
 
 \begin{theorem}
-  [Erdos-Szekeres]
+  [Erdős--Szekeres theorem]
   Every sequence of more than $(r-1)(s-1)$ distinct real numbers
   contains an increasing subsequence of length $r$
   or a decreasing subsequence of length $s$.
@@ -233,12 +235,12 @@ As a blanket statement, we allow any results in
 
 \section{Additional theorems in geometry}
 \subsection{Blanket statements}
-We allow with proof any results from
+We will allow without proof any results from
 \emph{Euclidean Geometry in Mathematical Olympiads} by Evan Chen.
 
 \subsection{Projective results}
 \begin{theorem}
-  [Desargue involution theorem]
+  [Desargues involution theorem]
   Let $ABCD$ be four points on a conic, and let $\ell$ be a line.
   Then the three pairs of points
   $(AB \cap \ell,\; CD \cap \ell)$,
@@ -287,13 +289,13 @@ We allow with proof any results from
 \end{theorem}
 
 \begin{theorem}
-  [Falting's theorem]
+  [Faltings' theorem]
   An algebraic curve of genus $g \ge 2$ over a number field
   has only finitely many rational points.
 \end{theorem}
 
 \begin{theorem}
-  [Catalan's conjecture]
+  [Mihăilescu's theorem, aka Catalan conjecture]
   The only solution in integers $x, y, a, b > 1$
   to $x^a - y^b = 1$ is $3^2 - 2^3 = 1$.
 \end{theorem}
@@ -327,14 +329,14 @@ We allow with proof any results from
 
 \subsection{Integer polynomials}
 \begin{theorem}
-  [Cohn criteria]
+  [Cohn's criterion]
   Let $f(x) = a_n x^n + \dots + a_1 x + a_0$ with $a_i \in \ZZ$
   and $0 \le a_i \le b - 1$ for some integer $b \ge 2$.
   If $f(b)$ is prime, then $f(x)$ is irreducible over $\ZZ$.
 \end{theorem}
 
 \begin{theorem}
-  [Hensel lemma]
+  [Hensel's lemma]
   Let $f(x) \in \ZZ[x]$ and let $p$ be a prime.
   If $a \in \ZZ$ satisfies $f(a) \equiv 0 \pmod{p^k}$ and $p \nmid f'(a)$,
   then there is a unique $b \pmod{p^{k+1}}$ with $b \equiv a \pmod{p^k}$
@@ -343,7 +345,7 @@ We allow with proof any results from
 
 \subsection{Results relating to $\nu_p$}
 \begin{theorem}
-  [Legendre formula]
+  [Legendre's formula]
   For a prime $p$ and positive integer $n$,
   \[ \nu_p(n!) = \sum_{i=1}^{\infty} \left\lfloor \frac{n}{p^i} \right\rfloor
     = \frac{n - s_p(n)}{p-1}, \]
@@ -354,8 +356,7 @@ We allow with proof any results from
   [Lifting the exponent lemma]
   Let $p$ be an odd prime and let $a, b$ be integers with
   $p \mid a - b$ but $p \nmid a$ and $p \nmid b$.
-  Then\footnote{This actually appears in the IMO Compendium already,
-  but the statement is so different-looking we provide it here again.}
+  Then
   \[ \nu_p(a^n - b^n) = \nu_p(a - b) + \nu_p(n). \]
   Similarly, if $p \mid a + b$ and $n$ is odd,
   then $\nu_p(a^n + b^n) = \nu_p(a + b) + \nu_p(n)$.
@@ -388,13 +389,13 @@ We allow with proof any results from
 \end{theorem}
 
 \begin{theorem}
-  [Cayley-Hamilton theorem]
+  [Cayley--Hamilton theorem]
   Every square matrix over a commutative ring
   satisfies its own characteristic polynomial.
 \end{theorem}
 
 \begin{theorem}
-  [Farkas lemma]
+  [Farkas' lemma]
   Let $A$ be an $m \times n$ real matrix and $b \in \RR^m$.
   Then exactly one of the following holds:
   \begin{enumerate}
@@ -405,14 +406,14 @@ We allow with proof any results from
 
 \section{Additional theorems in abstract algebra}
 \begin{theorem}
-  [Burnside lemma]
+  [Burnside's lemma]
   The number of orbits of a finite group $G$ acting on a set $X$ is
   \[ \frac{1}{|G|} \sum_{g \in G} |X^g|, \]
   where $X^g = \{x \in X : g \cdot x = x\}$ is the set of elements fixed by $g$.
 \end{theorem}
 
 \begin{theorem}
-  [Sylow theorem]
+  [Sylow theorems]
   Let $G$ be a finite group of order $p^a m$ where $p \nmid m$.
   \begin{enumerate}
     \item There exists a subgroup of $G$ of order $p^a$ (a Sylow $p$-subgroup).
@@ -443,7 +444,7 @@ We allow with proof any results from
 
 \section{Additional theorems in real and complex analysis}
 \begin{theorem}
-  [Picard]
+  [Picard's theorem]
   A nonconstant entire function $f \colon \CC \to \CC$
   takes every complex value with at most one exception.
 \end{theorem}
@@ -465,13 +466,13 @@ We allow with proof any results from
 \end{theorem}
 
 \begin{theorem}
-  [Heine--Borel]
+  [Heine--Borel theorem]
   A subset of $\RR^n$ is compact
   if and only if it is closed and bounded.
 \end{theorem}
 
 \begin{theorem}
-  [Bolzano--Weierstrass]
+  [Bolzano--Weierstrass theorem]
   Every bounded sequence in $\RR^n$
   has a convergent subsequence.
 \end{theorem}
@@ -484,14 +485,14 @@ We allow with proof any results from
 \end{theorem}
 
 \begin{theorem}
-  [Arzela--Ascoli theorem]
+  [Arzelà--Ascoli theorem]
   A sequence of real-valued functions on a compact metric space
   has a uniformly convergent subsequence
   if and only if it is uniformly bounded and equicontinuous.
 \end{theorem}
 
 \begin{theorem}
-  [Rouche's theorem]
+  [Rouché's theorem]
   If $f$ and $g$ are holomorphic inside and on a simple closed contour $C$,
   and $|g(z)| < |f(z)|$ on $C$,
   then $f$ and $f + g$ have the same number of zeros inside $C$,
