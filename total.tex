@@ -187,6 +187,16 @@ As a blanket statement, we allow any results in
   \[ f(x) = \sum_{k=0}^{n} \binom{x}{k} \Delta^k f(0). \]
 \end{theorem}
 
+\begin{theorem}
+  [Jacobi bialternant formula]
+  Let $n$ be a positive integer and let $\rho$ be the partition $(n - 1,n - 2,\dots,1)$. For a partition $\mu$ of length $n$, let
+  \[a_\mu = \det(x_i^{\mu_j})_{1 \le i,j \le n}\]
+  and define the Schur function
+  \[s_\mu = \sum_\tau x_1^{\gamma(\tau)_1}\dots x_n^{\gamma(\tau)_n},\]
+  where the sum is taken over semistandard Young tableaux $\tau$ on $\mu$ with entries in $\{1,\dots,n\}$ and $\gamma(\tau)$ is the content of $\tau$. Then for all partitions $\lambda$ of length $n$,
+  \[a_{\lambda + \rho} = a_\rho s_\lambda.\]
+\end{theorem}
+
 \section{Additional theorems in combinatorics}
 \subsection{Graph theory}
 \begin{theorem}
